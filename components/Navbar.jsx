@@ -1,12 +1,25 @@
+
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, ChevronRight, ArrowRight, Menu, X } from 'lucide-react'
 import { createRipple } from '../utils/ripple.js'
 
+// NOTE: submenu items below are placeholders based on what's visible in the
+// reference navbar (top-level labels only — the dropdown contents weren't
+// shown open in the screenshot). Swap in your real submenu links/routes.
 const links = [
   { label: 'Home', href: '/' },
   {
-    label: 'Programmes',
+    label: 'About Us',
+    href: '/#about',
+    // dropdown: [
+    //   { label: 'About Crescent', to: '/about' },
+    //   { label: 'Vision & Mission', to: '/about/vision-mission' },
+    //   { label: "Chancellor's Message", to: '/about/chancellor-message' },
+    // ],
+  },
+  {
+    label: 'Programmes Offered',
     href: '/#programmes',
     dropdown: [
       {
@@ -24,9 +37,48 @@ const links = [
       },
     ],
   },
-  { label: 'Facilities', href: '/#facilities' },
-  { label: 'FAQ', href: '/#faq' },
-  { label: 'Contact Us', href: '/#footer' },
+  {
+    label: 'Admission',
+    href: '/#admission',
+    dropdown: [
+      { label: 'How to apply', to: '/admission/apply' },
+      { label: 'New Registration', to: '/admission/new-registration' },
+      { label: 'Applicant Login', to: '/admission/applicant-login' },
+         { label: 'Notification', to: '/admission/notification' },
+    ],
+  },
+  // {
+  //   label: 'Project',
+  //   href: '/#project',
+  //   dropdown: [
+  //     { label: 'Ongoing Projects', to: '/project/ongoing' },
+  //     { label: 'Research', to: '/project/research' },
+  //   ],
+  // },
+  {
+    label: 'Students Corner',
+    href: '/#students-corner',
+    dropdown: [
+      { label: 'LMS Login', to: '/students/login' },
+      { label: 'Student Affairs', to: '/students/lms' },
+    ],
+  },
+  {
+    label: 'UGC Corner',
+    href: '/#ugc-corner',
+    dropdown: [
+      { label: 'AICTE Approval', to: '/ugc-corner/approval' },
+      { label: 'Degree Equivalence', to: '/ugc-corner/degree-equi' },
+      { label: 'UGC Notification', to: '/ugc-corner/notification' },
+      { label: 'Comliance', to: '/ugc-corner/compliance' },
+       { label: 'UGC Applications', to: '/ugc-corner/application' },
+        { label: 'Annual Reports', to: '/ugc-corner/annual' },
+         { label: 'Admission List', to: '/ugc-corner/admission' },
+
+    ],
+  },
+  { label: "FAQ's", href: '/#faq' },
+  { label: 'Contact', href: '/#footer' },
 ]
 
 export default function Navbar() {
@@ -40,18 +92,18 @@ export default function Navbar() {
         <div className="glass-strong rounded-[24px] px-4 sm:px-6 flex items-center justify-between py-2.5">
           <Link to="/" className="flex items-center gap-3">
             <img
-  src="/src/assets/crescent-logo.png"
-  alt="Crescent Institute of Science & Technology"
-  className="h-12 w-auto object-contain"
-/>
+              src="/src/assets/crescent-logo.png"
+              alt="Crescent Institute of Science & Technology"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
             {links.map((link) => (
               <div
                 key={link.label}
                 className="relative group"
-                onMouseEnter={() => link.dropdown && setOpen(true)}
+                onMouseEnter={() => link.dropdown && setOpen(link.label)}
                 onMouseLeave={() => {
                   if (link.dropdown) {
                     setOpen(false)
@@ -61,14 +113,14 @@ export default function Navbar() {
               >
                 <a
                   href={link.href}
-                  className="relative flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-navy-800 transition-colors duration-350 py-2"
+                  className="relative flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-navy-800 transition-colors duration-350 py-2 whitespace-nowrap"
                 >
                   {link.label}
                   {link.dropdown && <ChevronDown size={14} />}
                   <span className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-gold rounded-full transition-all duration-350 group-hover:w-full" />
                 </a>
 
-                {link.dropdown && open && (
+                {link.dropdown && open === link.label && (
                   <div className="absolute top-full left-0 pt-3 w-56 animate-fade-in-up">
                     <div className="glass-strong rounded-2xl py-2 shadow-glass-lg">
                       {link.dropdown.map((item) =>
@@ -116,13 +168,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <a
-            href="/#programmes"
-            onMouseDown={createRipple}
-            className="btn-shine glass-btn-solid hidden lg:inline-flex text-sm px-5 py-2.5"
-          >
-            Apply Now <ArrowRight size={15} />
-          </a>
 
           <button className="lg:hidden text-navy-800" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X /> : <Menu />}
@@ -130,7 +175,7 @@ export default function Navbar() {
         </div>
 
         {mobileOpen && (
-          <div className="lg:hidden mt-2 glass-strong rounded-2xl px-5 py-4 space-y-3 animate-fade-in-up">
+          <div className="lg:hidden mt-2 glass-strong rounded-2xl px-5 py-4 space-y-3 animate-fade-in-up max-h-[75vh] overflow-y-auto">
             {links.map((link) =>
               link.dropdown ? (
                 <div key={link.label}>
