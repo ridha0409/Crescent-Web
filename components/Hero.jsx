@@ -70,7 +70,7 @@ export default function Hero() {
           <div className="glass-strong rounded-[28px] overflow-hidden p-2">
             <div className="rounded-[20px] overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80"
+                src="/src/assets/Crescent institution3.png"
                 alt="Campus building"
                 className="w-full h-72 sm:h-96 object-cover"
               />
