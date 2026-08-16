@@ -5,9 +5,6 @@ import WhyChoose from "../components/WhyChoose";
 import About from "../components/About";
 import Testimonials from "../components/Testimonials";
 import Facilities from "../components/Facilities";
-import FAQ from "../components/FAQ";
-
-
 
 export default function Home() {
   return (
@@ -19,8 +16,6 @@ export default function Home() {
       <About />
       <Testimonials />
       <Facilities />
-      <FAQ />
-      
     </>
   );
 }
