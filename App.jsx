@@ -1,3 +1,5 @@
+
+
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
@@ -15,6 +17,7 @@ import UGProgrammes from "./pages/UGProgrammes";
 import PGProgrammes from "./pages/PGProgrammes";
 import FAQPage from "./pages/FAQPage";
 import ChatBot from "./components/ChatBot";
+import CDOEteam from "./pages/CDOEteam.jsx";
 
 export default function App() {
   return (
@@ -38,7 +41,7 @@ export default function App() {
 
     <AnnouncementMarquee />
     <ChatBot />
-   
+
     <div className="min-h-screen relative">
       <Routes>
         <Route element={<Layout />}>
@@ -46,6 +49,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/about/vision-mission" element={<VisionMission />} />
           <Route path="/about/chancellor-message" element={<ChancellorMessage />} />
+          <Route path="/about/cdoe-team" element={<CDOEteam />} />
           <Route path="/programmes" element={<ProgrammesOffered />} />
           <Route path="/programmes/ug" element={<UGProgrammes />} />
           <Route path="/programmes/pg" element={<PGProgrammes />} />
