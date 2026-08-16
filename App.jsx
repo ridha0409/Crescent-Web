@@ -3,10 +3,17 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import AnnouncementMarquee from "./components/AnnouncementMarquee";
+import About from "./pages/About";
+import VisionMission from "./pages/VisionMission";
+import ChancellorMessage from "./pages/ChancellorMessage";
 import MBA from "./pages/MBA";
 import MCA from "./pages/MCA";
 import BAIslamicStudies from "./pages/BAIslamicStudies";
 import ProgrammeDetail from "./pages/ProgrammeDetail";
+import ProgrammesOffered from "./pages/ProgrammesOffered";
+import UGProgrammes from "./pages/UGProgrammes";
+import PGProgrammes from "./pages/PGProgrammes";
+import FAQPage from "./pages/FAQPage";
 import ChatBot from "./components/ChatBot";
 
 export default function App() {
@@ -36,6 +43,12 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about/vision-mission" element={<VisionMission />} />
+          <Route path="/about/chancellor-message" element={<ChancellorMessage />} />
+          <Route path="/programmes" element={<ProgrammesOffered />} />
+          <Route path="/programmes/ug" element={<UGProgrammes />} />
+          <Route path="/programmes/pg" element={<PGProgrammes />} />
           <Route path="/programmes/mba" element={<MBA />} />
           <Route path="/programmes/mca" element={<MCA />} />
           <Route
@@ -46,6 +59,7 @@ export default function App() {
             path="/programmes/:id"
             element={<ProgrammeDetail />}
           />
+          <Route path="/faq" element={<FAQPage />} />
         </Route>
       </Routes>
     </div>
