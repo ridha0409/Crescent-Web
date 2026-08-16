@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Landmark, Leaf, ShieldCheck, Users2, ArrowRight } from 'lucide-react'
 import useReveal from '../hooks/useReveal.js'
 import { createRipple } from '../utils/ripple.js'
@@ -49,9 +50,9 @@ export default function About() {
             ))}
           </div>
 
-          <a href="#" onMouseDown={createRipple} className="glass-btn text-navy-800 px-6 py-2.5">
+          <Link to="/about" onMouseDown={createRipple} className="glass-btn text-navy-800 px-6 py-2.5">
             Know More About Us <ArrowRight size={15} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
